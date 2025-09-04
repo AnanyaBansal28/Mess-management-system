@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <title>UMESS Portal</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #e9f0ff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: #1a1a66;
+      margin-bottom: 5px;
+    }
+    .subtitle {
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    .container {
+      background: #fff;
+      width: 380px;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    .role-switch {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      justify-content: center;
+    }
+    .role-switch a {
+      flex: 1;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+    .role-switch a:hover {
+      background: #4a3aff;
+      color: #fff;
+    }
+
+    .form-box {
+      display: none;
+      text-align: left;
+      animation: fadeIn 0.3s ease;
+    }
+    :target {
+      display: block;
+    }
+
+    .form-box label {
+      font-size: 14px;
+      margin: 8px 0 4px;
+      display: block;
+    }
+    .form-box input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: none;
+      background: #f5f5f5;
+      margin-bottom: 12px;
+      font-size: 14px;
+    }
+
+    .btn {
+      display: inline-block;
+      width: 100%;
+      padding: 12px;
+      border-radius: 12px;
+      background: #4a3aff;
+      color: #fff;
+      font-weight: 600;
+      text-align: center;
+      text-decoration: none;
+      margin-top: 5px;
+      box-shadow: 0 4px 12px rgba(74,58,255,0.3);
+      transition: 0.3s;
+    }
+    .btn:hover {
+      background: #3728cc;
+    }
+
+    .support {
+      margin-top: 15px;
+      font-size: 13px;
+      color: #666;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+  </style>
+</head>
+<body>
+  <div class="logo"><i class="fa-solid fa-utensils" style="font-size:30px; color:blue; margin-bottom:10px;"></i> UMESS</div>
+  <div class="subtitle">Access your mess management portal</div>
+
+  <div class="container">
+    <h2>Welcome Back</h2>
+ 
+    <div class="role-switch">
+      <a href="#admin-login"><i class="fa-solid fa-shield"></i><br>Admin/Staff</a>
+      <a href="#student-login"><i class="fa-solid fa-graduation-cap"></i><br>Student</a>
+    </div>
+
+    <div id="admin-login" class="form-box">
+      <form>
+        <label>Email</label>
+        <input type="email" placeholder="Enter email" required>
+        <label>Password</label>
+        <input type="password" placeholder="Enter password" required>
+        <button type="submit" class="btn" formaction="admin_dashboard.html">Login</button>
+      </form>
+      <p style="text-align:center;margin-top:10px;">New here? <a href="#admin-signup">Sign Up</a></p>
+    </div>
+
+    <div id="admin-signup" class="form-box">
+      <form>
+        <label>Full Name</label>
+        <input type="text" placeholder="Enter full name" required>
+        <label>Email</label>
+        <input type="email" placeholder="Enter email" required>
+        <label>Password</label>
+        <input type="password" placeholder="Enter password" required>
+        <button type="submit" class="btn" formaction="admin_dashboard.html">Sign Up</button>
+      </form>
+      <p style="text-align:center;margin-top:10px;">Already have an account? <a href="#admin-login">Login</a></p>
+    </div>
+
+    <div id="student-login" class="form-box">
+      <form>
+        <label>Student ID</label>
+        <input type="text" placeholder="Enter student ID" required>
+        <label>Password</label>
+        <input type="password" placeholder="Enter password" required>
+        <button type="submit" class="btn" formaction="studentdashboard.html">Login</button>
+      </form>
+      <p style="text-align:center;margin-top:10px;">New here? <a href="#student-signup">Sign Up</a></p>
+    </div>
+
+    <div id="student-signup" class="form-box">
+      <form>
+        <label>Student ID</label>
+        <input type="text" placeholder="Enter student ID" required>
+        <label>Password</label>
+        <input type="password" placeholder="Enter password" required>
+        <button type="submit" class="btn" formaction="studentdashboard.html">Sign Up</button>
+      </form>
+      <p style="text-align:center;margin-top:10px;">Already have an account? <a href="#student-login">Login</a></p>
+    </div>
+
+    <div class="support">Need help? Contact IT Support</div>
+  </div>
+</body>
+</html>
