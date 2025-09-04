@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Attendance Tracking</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9fafc;
+      color: #333;
+    }
+
+    /* Navbar */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 3px 6px;
+      background: #fff;
+      border-bottom: 1px solid #eee;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    header h2 {
+      font-size: 20px;
+      font-weight: 600;
+      color: #4c1d95;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .actions {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .date-box {
+      padding: 8px 12px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 14px;
+      background: #fff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #000; /* Black text */
+    }
+    .date-box i {
+      color: #000; /* Black calendar icon */
+    }
+    .btn-purple {
+      background: #8b5cf6;
+      color: #fff;
+      padding: 3px 6px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Stats */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      padding: 20px 30px;
+    }
+    .stat-card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+    .stat-card h3 {
+      margin: 5px 0;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .stat-card p {
+      font-size: 14px;
+      color: #777;
+    }
+    .stat-purple { color: #8b5cf6; }
+    .stat-green { color: #16a34a; }
+    .stat-orange { color: #ea580c; }
+
+    /* Tabs */
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin: 20px auto;
+      background: #fff;
+      width: 1400px;
+      padding: 10px 30px;
+      border-radius: 25px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      gap: 450px;
+    }
+    .tabs a {
+      text-decoration: none;
+      color: #111;
+      font-weight: 500;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+
+    /* Meal Attendance */
+    .meal-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      padding: 20px 30px;
+    }
+    .meal-card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .meal-card h4 {
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+    .progress {
+      height: 6px;
+      background: #eee;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .progress span {
+      display: block;
+      height: 100%;
+    }
+    .progress-orange span { background: #ea580c; width: 30%; }
+    .progress-green span { background: #16a34a; width: 30%; }
+    .progress-purple span { background: #8b5cf6; width: 40%; }
+
+    /* Student Attendance */
+    .students {
+      background: #fff;
+      margin: 20px 30px;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .students h3 {
+      margin-bottom: 15px;
+    }
+    .student-card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid #eee;
+    }
+    .student-info {
+      font-size: 15px;
+    }
+    .meals {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+    .meals span {
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .meals .yes { color: #16a34a; }
+    .meals .no { color: #ef4444; }
+
+    /* Popup (Modal) */
+    .overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 200;
+    }
+    .overlay:target {
+      display: flex;
+    }
+    .popup {
+      background: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      width: 320px;
+      max-width: 90%;
+      text-align: center;
+      position: relative;
+    }
+    .popup h3 {
+      margin-bottom: 15px;
+      color: #4c1d95;
+    }
+    .popup input, .popup select {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+    }
+    .popup .btn-purple {
+      width: 100%;
+      margin-top: 10px;
+      justify-content: center;
+    }
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      text-decoration: none;
+      font-size: 20px;
+      color: #999;
+    }
+    .close-btn:hover {
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <header>
+    <h2><i class="fa-solid fa-user-check"></i> Attendance Tracking</h2>
+    <div class="actions">
+      <a href="#calendar" class="date-box">31-12-2024 <i class="fa-solid fa-calendar-days"></i></a>
+      <a href="#markAttendance" class="btn-purple"><i class="fa-solid fa-check-circle"></i> Mark Attendance</a>
+    </div>
+  </header>
+
+  <!-- Stats -->
+  <div class="stats">
+    <div class="stat-card"><p><i class="fa-solid fa-users"></i> Today's Total</p><h3 class="stat-purple">595</h3></div>
+    <div class="stat-card"><p><i class="fa-solid fa-chart-line"></i> Attendance Rate</p><h3 class="stat-green">40.8%</h3></div>
+    <div class="stat-card"><p><i class="fa-solid fa-utensils"></i> Peak Meal</p><h3 class="stat-orange">Lunch</h3></div>
+    <div class="stat-card"><p><i class="fa-solid fa-user-graduate"></i> Active Students</p><h3 class="stat-purple">486</h3></div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs">
+  <a href="attendencetracking.html" class="active">
+    <i class="fa-solid fa-list"></i> Daily Attendance
+  </a>
+  <a href="analytics.html">
+    <i class="fa-solid fa-chart-pie"></i> Analytics
+  </a>
+  <a href="report.html">
+    <i class="fa-solid fa-file-alt"></i> Reports
+  </a>
+</div>
+
+
+  <!-- Meal Attendance -->
+  <div class="meal-cards">
+    <div class="meal-card"><h4><i class="fa-solid fa-mug-hot"></i> Breakfast</h4><p>3 students</p><div class="progress progress-orange"><span></span></div></div>
+    <div class="meal-card"><h4><i class="fa-solid fa-bowl-food"></i> Lunch</h4><p>3 students</p><div class="progress progress-green"><span></span></div></div>
+    <div class="meal-card"><h4><i class="fa-solid fa-drumstick-bite"></i> Dinner</h4><p>4 students</p><div class="progress progress-purple"><span></span></div></div>
+  </div>
+
+  <!-- Student Attendance -->
+  <div class="students">
+    <h3><i class="fa-solid fa-user-graduate"></i> Student Attendance</h3>
+    <div class="student-card"><div class="student-info"><strong>Rahul Sharma</strong><br>CS21001</div><div class="meals"><span class="yes"><i class="fa-solid fa-check"></i> Breakfast</span><span class="yes"><i class="fa-solid fa-check"></i> Lunch</span><span class="no"><i class="fa-solid fa-xmark"></i> Dinner</span><strong>2/3</strong></div></div>
+    <div class="student-card"><div class="student-info"><strong>Priya Patel</strong><br>ME21045</div><div class="meals"><span class="no"><i class="fa-solid fa-xmark"></i> Breakfast</span><span class="yes"><i class="fa-solid fa-check"></i> Lunch</span><span class="yes"><i class="fa-solid fa-check"></i> Dinner</span><strong>2/3</strong></div></div>
+    <div class="student-card"><div class="student-info"><strong>Amit Kumar</strong><br>EE21023</div><div class="meals"><span class="yes"><i class="fa-solid fa-check"></i> Breakfast</span><span class="no"><i class="fa-solid fa-xmark"></i> Lunch</span><span class="yes"><i class="fa-solid fa-check"></i> Dinner</span><strong>2/3</strong></div></div>
+    <div class="student-card"><div class="student-info"><strong>Snehal Reddy</strong><br>IT21067</div><div class="meals"><span class="yes"><i class="fa-solid fa-check"></i> Breakfast</span><span class="yes"><i class="fa-solid fa-check"></i> Lunch</span><span class="yes"><i class="fa-solid fa-check"></i> Dinner</span><strong>3/3</strong></div></div>
+    <div class="student-card"><div class="student-info"><strong>Arjun Singh</strong><br>CE21032</div><div class="meals"><span class="no"><i class="fa-solid fa-xmark"></i> Breakfast</span><span class="no"><i class="fa-solid fa-xmark"></i> Lunch</span><span class="yes"><i class="fa-solid fa-check"></i> Dinner</span><strong>1/3</strong></div></div>
+  </div>
+
+  <!-- Calendar Popup -->
+  <div id="calendar" class="overlay">
+    <div class="popup">
+      <a href="#" class="close-btn">&times;</a>
+      <h3><i class="fa-solid fa-calendar-days"></i> Select Date</h3>
+      <input type="date">
+      <button class="btn-purple"><i class="fa-solid fa-plus"></i> Add Now</button>
+    </div>
+  </div>
+
+  <!-- Mark Attendance Popup -->
+  <div id="markAttendance" class="overlay">
+    <div class="popup">
+      <a href="#" class="close-btn">&times;</a>
+      <h3><i class="fa-solid fa-user-check"></i> Mark Student Attendance</h3>
+      <input type="text" placeholder="Enter Student ID">
+      <select>
+        <option value="">Select Meal Type</option>
+        <option>Breakfast</option>
+        <option>Lunch</option>
+        <option>Dinner</option>
+      </select>
+      <button class="btn-purple"><i class="fa-solid fa-check"></i> Make Present</button>
+    </div>
+  </div>
+</body>
+</html>
