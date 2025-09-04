@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventory Control</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      background: #f5fdf7;
+      color: #2e2e2e;
+      line-height: 1.5;
+    }
+
+    header {
+      background: #1b5e20;
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+    }
+
+    main {
+      padding: 1.5rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .actions {
+      margin-bottom: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .btn {
+      background: #43a047;
+      color: #fff;
+      padding: 0.6rem 1rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: #2e7d32;
+    }
+    
+    .table-container {
+      overflow-x: auto;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 600px;
+    }
+
+    th, td {
+      padding: 0.8rem;
+      text-align: left;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    th {
+      background: #2e7d32;
+      color: #fff;
+      font-size: 0.95rem;
+    }
+
+    tr:nth-child(even) {
+      background: #f1f8f2;
+    }
+
+    tr:hover {
+      background: #e8f5e9;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+      background: #1b5e20;
+      color: #fff;
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.4rem;
+      }
+      th, td {
+        font-size: 0.85rem;
+        padding: 0.6rem;
+      }
+      .btn {
+        font-size: 0.8rem;
+        padding: 0.5rem 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🌿 Inventory Control</h1>
+  </header>
+
+  <main>
+    <div class="actions">
+      <a href="#" class="btn">➕ Add Item</a>
+      <a href="#" class="btn">📦 Export Inventory</a>
+    </div>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Item Name</th>
+            <th>Category</th>
+            <th>Stock Quantity</th>
+            <th>Unit</th>
+            <th>Supplier</th>
+            <th>Last Updated</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Rice</td>
+            <td>Grains</td>
+            <td>50</td>
+            <td>kg</td>
+            <td>Local Supplier</td>
+            <td>2025-09-04</td>
+          </tr>
+          <tr>
+            <td>Wheat Flour</td>
+            <td>Grains</td>
+            <td>30</td>
+            <td>kg</td>
+            <td>Fresh Mills</td>
+            <td>2025-09-01</td>
+          </tr>
+          <tr>
+            <td>Milk</td>
+            <td>Dairy</td>
+            <td>20</td>
+            <td>liters</td>
+            <td>Dairy Farm</td>
+            <td>2025-09-02</td>
+          </tr>
+          <tr>
+            <td>Vegetables</td>
+            <td>Fresh Produce</td>
+            <td>40</td>
+            <td>kg</td>
+            <td>Local Market</td>
+            <td>2025-09-03</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 Mess Management System | Inventory Module
+  </footer>
+
+</body>
+</html>
