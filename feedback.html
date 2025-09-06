@@ -21,7 +21,7 @@
       font-weight: 400;
     }
 
-    /* Navbar - fixed */
+    /* Navbar */
     .navbar {
       display: flex;
       justify-content: space-between;
@@ -29,8 +29,8 @@
       background: #fff;
       padding: 12px 20px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-      flex-wrap: nowrap;       /* Prevent wrapping */
-      overflow-x: auto;        /* Allow horizontal scroll if needed */
+      flex-wrap: nowrap;
+      overflow-x: auto;
     }
     .navbar-left {
       display: flex;
@@ -128,15 +128,29 @@
       color: #712db1;
     }
 
-    /* Rating Stars */
+    /* Rating Stars (HTML/CSS only) */
     .stars {
-      font-size: 22px;
-      color: #d1d5db;
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: left;
+      gap: 5px;
       margin: 10px 0;
-      cursor: pointer;
     }
-    .stars i.active {
-      color: #facc15;
+    .stars input {
+      display: none; /* hide radio buttons */
+    }
+    .stars label {
+      font-size: 30px;
+      color: #d1d5db; /* default gray */
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .stars label:hover,
+    .stars label:hover ~ label {
+      color: #facc15; /* yellow on hover */
+    }
+    .stars input:checked ~ label {
+      color: #facc15; /* yellow when selected */
     }
 
     /* Input */
@@ -173,15 +187,6 @@
       background: #7834d1;
     }
 
-    /* Thank you message */
-    .thank-you {
-      display: none;
-      text-align: center;
-      font-weight: 600;
-      color: #16a34a;
-      margin-top: 15px;
-    }
-
     /* Recent Feedback */
     .feedback-item {
       background: #f9fafb;
@@ -194,6 +199,10 @@
     .feedback-item .stars {
       font-size: 16px;
       margin-bottom: 6px;
+      flex-direction: row;
+    }
+    .feedback-item .stars i.active {
+      color: #facc15;
     }
     .feedback-item .date {
       position: absolute;
@@ -279,17 +288,24 @@
   <div class="card">
     <div class="card-header"><i class="fa-regular fa-message"></i> Share Your Feedback</div>
     <div>Rate Today’s Meal</div>
-    <div class="stars" id="rating-stars">
-      <i class="fas fa-star" data-value="1"></i>
-      <i class="fas fa-star" data-value="2"></i>
-      <i class="fas fa-star" data-value="3"></i>
-      <i class="fas fa-star" data-value="4"></i>
-      <i class="fas fa-star" data-value="5"></i>
+
+    <!-- Star Rating (HTML/CSS only) -->
+    <div class="stars">
+      <input type="radio" name="rating" id="star5" value="5">
+      <label for="star5">&#9733;</label>
+      <input type="radio" name="rating" id="star4" value="4">
+      <label for="star4">&#9733;</label>
+      <input type="radio" name="rating" id="star3" value="3">
+      <label for="star3">&#9733;</label>
+      <input type="radio" name="rating" id="star2" value="2">
+      <label for="star2">&#9733;</label>
+      <input type="radio" name="rating" id="star1" value="1">
+      <label for="star1">&#9733;</label>
     </div>
+
     <div>Your Comments</div>
     <textarea class="comment-box" id="comment" placeholder="Share your thoughts about the food, service, or suggestions for improvement..."></textarea>
-    <button class="submit-btn" id="submit-feedback">Submit Feedback</button>
-    <div class="thank-you" id="thank-you">✅ Thank you for your feedback!</div>
+    <button class="submit-btn">Submit Feedback</button>
   </div>
 
   <!-- Recent Feedback -->
@@ -319,27 +335,5 @@
     </div>
   </div>
 
-  <script>
-    // ⭐ Make stars clickable
-    const stars = document.querySelectorAll("#rating-stars i");
-    stars.forEach(star => {
-      star.addEventListener("click", () => {
-        const value = star.getAttribute("data-value");
-        stars.forEach(s => {
-          s.classList.remove("active");
-          if (s.getAttribute("data-value") <= value) {
-            s.classList.add("active");
-          }
-        });
-      });
-    });
-
-    // ✅ Show thank you message on submit
-    document.getElementById("submit-feedback").addEventListener("click", () => {
-      document.getElementById("thank-you").style.display = "block";
-    });
-  </script>
-
 </body>
 </html>
-
