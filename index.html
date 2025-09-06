@@ -150,6 +150,43 @@
       padding: 20px;
       font-size: 13px;
     }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 15px 20px;
+      }
+      .hero h1 {
+        font-size: 22px;
+      }
+      .hero p {
+        font-size: 13px;
+      }
+      .stat-box {
+        gap: 20px;
+      }
+    }
+    @media (max-width: 480px) {
+      header {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .hero {
+        padding: 30px 15px;
+      }
+      .hero h1 {
+        font-size: 20px;
+      }
+      .hero p {
+        font-size: 12px;
+      }
+      .stat-box {
+        flex-direction: column;
+        gap: 15px;
+      }
+      .card {
+        width: 100%;
+      }
+    }
   </style>
 </head>
 <body>
@@ -205,3 +242,4 @@
 
 </body>
 </html>
+
