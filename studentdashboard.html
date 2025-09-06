@@ -5,16 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>UMess - Student Dashboard</title>
 
-  <!-- Google Font (Inter for modern clean look) -->
+  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
   <style>
-     body {
+    body {
       font-family: 'Poppins', sans-serif;
-      font-weight: 300;   /* light aesthetic look */
+      font-weight: 300;
       color: #333;
       margin: 0;
       padding: 0;
@@ -29,6 +29,7 @@
       background: #fff;
       padding: 16px 50px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      flex-wrap: wrap;
     }
     .navbar-left {
       display: flex;
@@ -65,7 +66,7 @@
       font-weight: 500;
     }
 
-    /* Dashboard Heading */
+    /* Dashboard */
     .dashboard {
       padding: 35px 60px 10px;
     }
@@ -91,6 +92,7 @@
       border-radius: 25px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.05);
       gap: 200px;
+      flex-wrap: wrap;
     }
     .tabs a {
       text-decoration: none;
@@ -121,10 +123,10 @@
       gap: 8px;
     }
     .menu-header i {
-      color: #dc2626; /* Red for meals */
+      color: #dc2626;
     }
 
-    /* Meal Card */
+    /* Card */
     .card {
       border: 1px solid #e5e7eb;
       border-radius: 15px;
@@ -185,6 +187,71 @@
     .not-selected {
       background: #4f46e5;
     }
+
+    /* ---------------- Responsive ---------------- */
+    @media (max-width: 1024px) {
+      .tabs {
+        width: 90%;
+        gap: 50px;
+        padding: 10px 20px;
+      }
+      .menu-box {
+        width: 90%;
+      }
+    }
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 12px 20px;
+      }
+      .dashboard {
+        padding: 25px 20px 10px;
+      }
+      .tabs {
+        flex-direction: row;
+        justify-content: space-around;
+        gap: 20px;
+        padding: 10px;
+      }
+      .tabs a {
+        font-size: 13px;
+      }
+    }
+    @media (max-width: 480px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      .navbar-right {
+        margin-top: 8px;
+      }
+      .dashboard h1 {
+        font-size: 20px;
+      }
+      .tabs {
+        flex-direction: column;
+        width: 95%;
+        text-align: center;
+        gap: 15px;
+      }
+      .tabs a {
+        font-size: 14px;
+        justify-content: center;
+      }
+      .menu-box {
+        padding: 15px;
+        width: 95%;
+      }
+      .card h3 {
+        font-size: 14px;
+      }
+      .price {
+        font-size: 13px;
+      }
+      .time {
+        font-size: 12px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -196,8 +263,8 @@
       <div class="student-portal">Student Portal</div>
     </div>
     <div class="navbar-right">
-      Welcome, Ananya Bansal
-      <a href="index.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+      Welcome, John Doe
+      <a href="1st page.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </div>
   </div>
 
@@ -265,5 +332,3 @@
 
 </body>
 </html>
-
-
