@@ -5,10 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>UMess - Monthly Bill</title>
 
-  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
   <style>
@@ -20,7 +17,6 @@
       color: #111827;
     }
 
-    /* ---------------- Navbar ---------------- */
     .navbar {
       display: flex;
       justify-content: space-between;
@@ -28,14 +24,14 @@
       background: #fff;
       padding: 12px 20px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-      flex-wrap: nowrap; /* never wrap */
+      flex-wrap: nowrap;
       overflow: hidden;
     }
     .navbar-left {
       display: flex;
       align-items: center;
       gap: 10px;
-      flex-shrink: 1; /* allow shrinking */
+      flex-shrink: 1;
       min-width: 0;
     }
     .logo {
@@ -78,7 +74,6 @@
       white-space: nowrap;
     }
 
-    /* ---------------- Dashboard ---------------- */
     .dashboard {
       padding: 35px 60px 10px;
     }
@@ -94,7 +89,6 @@
       font-weight: 400;
     }
 
-    /* ---------------- Tabs ---------------- */
     .tabs {
       display: flex;
       justify-content: center;
@@ -117,7 +111,6 @@
       gap: 6px;
     }
 
-    /* ---------------- Bill Box ---------------- */
     .bill-box {
       background: #fff;
       border-radius: 20px;
@@ -203,7 +196,6 @@
     }
     .pay-btn:hover { background: #15803d; }
 
-    /* ---------------- Responsive ---------------- */
     @media (max-width: 1024px) {
       .tabs { width: 90%; gap: 50px; padding: 10px 20px; }
       .bill-box { width: 90%; padding: 20px; }
@@ -227,7 +219,6 @@
 </head>
 <body>
 
-  <!-- Navbar -->
   <div class="navbar">
     <div class="navbar-left">
       <div class="logo"><i class="fas fa-utensils"></i> UMESS</div>
@@ -235,17 +226,15 @@
     </div>
     <div class="navbar-right">
       Welcome, Ananya Bansal
-      <a href="1st page.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+      <a href="index.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </div>
   </div>
 
-  <!-- Dashboard -->
   <div class="dashboard">
     <h1>Student Dashboard</h1>
     <p>Manage your meals, attendance, and feedback</p>
   </div>
 
-  <!-- Tabs -->
   <div class="tabs">
     <a href="studentdashboard.html"><i class="fas fa-utensils"></i> Meals</a>
     <a href="attendence.html"><i class="fa-regular fa-calendar"></i> Attendance</a>
@@ -253,11 +242,9 @@
     <a href="feedback.html"><i class="fa-regular fa-message"></i> Feedback</a>
   </div>
 
-  <!-- Bill Box -->
   <div class="bill-box">
     <div class="bill-header"><i class="fa-regular fa-file"></i> Monthly Bill</div>
 
-    <!-- Month Cards -->
     <div class="month-cards">
       <div class="month-card current">
         <div>Current Month</div>
@@ -271,7 +258,6 @@
       </div>
     </div>
 
-    <!-- Breakdown -->
     <div class="breakdown">
       <h3>Bill Breakdown</h3>
       <div class="item">
@@ -288,16 +274,13 @@
       </div>
     </div>
 
-    <!-- Total -->
     <div class="total">
       <span>Total</span>
       <span>₹1,355</span>
     </div>
 
-    <!-- Pay Button -->
     <button class="pay-btn">Pay Now</button>
   </div>
 
 </body>
 </html>
-
