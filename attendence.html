@@ -5,10 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>UMess - Attendance</title>
 
-  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
   <style>
@@ -20,8 +17,6 @@
       color: #111827;
       font-weight: 400;
     }
-
-    /* Navbar */
     .navbar {
       display: flex;
       justify-content: space-between;
@@ -63,8 +58,6 @@
       color: #374151;
       font-weight: 500;
     }
-
-    /* Dashboard Heading */
     .dashboard {
       padding: 35px 60px 10px;
     }
@@ -79,8 +72,6 @@
       margin-top: 4px;
       font-weight: 400;
     }
-
-    /* Tabs */
     .tabs {
       display: flex;
       justify-content: center;
@@ -102,8 +93,6 @@
       align-items: center;
       gap: 6px;
     }
-
-    /* Attendance Box */
     .attendance-box {
       background: #fff;
       border-radius: 20px;
@@ -124,8 +113,6 @@
     .attendance-header i {
       color: #2563eb;
     }
-
-    /* Stats row */
     .stats {
       display: flex;
       gap: 20px;
@@ -160,8 +147,6 @@
       font-size: 24px;
       margin: 0;
     }
-
-    /* Recent Attendance */
     .recent {
       font-weight: 600;
       margin-bottom: 15px;
@@ -205,8 +190,6 @@
     .dot.red {
       background: #dc2626;
     }
-
-    /* ---------------- Responsive ---------------- */
     @media (max-width: 1024px) {
       .tabs {
         width: 90%;
@@ -273,7 +256,6 @@
 </head>
 <body>
 
-  <!-- Navbar -->
   <div class="navbar">
     <div class="navbar-left">
       <div class="logo"><i class="fas fa-utensils"></i> UMESS</div>
@@ -281,17 +263,15 @@
     </div>
     <div class="navbar-right">
       Welcome, Ananya Bansal
-      <a href="1st page.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+      <a href="index.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </div>
   </div>
 
-  <!-- Dashboard -->
   <div class="dashboard">
     <h1>Student Dashboard</h1>
     <p>Manage your meals, attendance, and feedback</p>
   </div>
 
-  <!-- Tabs -->
   <div class="tabs">
     <a href="studentdashboard.html"><i class="fas fa-utensils"></i> Meals</a>
     <a href="attendence.html"><i class="fa-regular fa-calendar"></i> Attendance</a>
@@ -299,11 +279,8 @@
     <a href="feedback.html"><i class="fa-regular fa-message"></i> Feedback</a>
   </div>
 
-  <!-- Attendance Box -->
   <div class="attendance-box">
     <div class="attendance-header"><i class="fa-regular fa-calendar"></i> Meal Attendance</div>
-
-    <!-- Stats -->
     <div class="stats">
       <div class="stat-card stat-green">
         <h2>87%</h2>
@@ -318,8 +295,6 @@
         <p>Days Missed</p>
       </div>
     </div>
-
-    <!-- Recent Attendance -->
     <div class="recent">Recent Attendance</div>
     <div class="attendance-list">
       <div class="attendance-item">
@@ -347,4 +322,3 @@
 
 </body>
 </html>
-
