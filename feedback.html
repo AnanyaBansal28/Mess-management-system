@@ -4,13 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>UMess - Feedback</title>
-
-  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
   <style>
     body {
       font-family: "Inter", sans-serif;
@@ -20,8 +15,6 @@
       color: #111827;
       font-weight: 400;
     }
-
-    /* Navbar */
     .navbar {
       display: flex;
       justify-content: space-between;
@@ -66,8 +59,6 @@
       color: #374151;
       font-weight: 500;
     }
-
-    /* Dashboard */
     .dashboard {
       padding: 35px 60px 10px;
     }
@@ -82,8 +73,6 @@
       margin-top: 4px;
       font-weight: 400;
     }
-
-    /* Tabs */
     .tabs {
       display: flex;
       justify-content: center;
@@ -105,8 +94,6 @@
       align-items: center;
       gap: 6px;
     }
-
-    /* Card Box */
     .card {
       background: #fff;
       border-radius: 20px;
@@ -127,8 +114,6 @@
     .card-header i {
       color: #712db1;
     }
-
-    /* Rating Stars (HTML/CSS only) */
     .stars {
       display: flex;
       flex-direction: row-reverse;
@@ -137,23 +122,21 @@
       margin: 10px 0;
     }
     .stars input {
-      display: none; /* hide radio buttons */
+      display: none;
     }
     .stars label {
       font-size: 30px;
-      color: #d1d5db; /* default gray */
+      color: #d1d5db;
       cursor: pointer;
       transition: color 0.2s;
     }
     .stars label:hover,
     .stars label:hover ~ label {
-      color: #facc15; /* yellow on hover */
+      color: #facc15;
     }
     .stars input:checked ~ label {
-      color: #facc15; /* yellow when selected */
+      color: #facc15;
     }
-
-    /* Input */
     .comment-box {
       width: 100%;
       min-height: 80px;
@@ -167,8 +150,6 @@
       outline: none;
       font-family: inherit;
     }
-
-    /* Button */
     .submit-btn {
       display: block;
       width: 100%;
@@ -186,8 +167,6 @@
     .submit-btn:hover {
       background: #7834d1;
     }
-
-    /* Recent Feedback */
     .feedback-item {
       background: #f9fafb;
       padding: 15px;
@@ -211,8 +190,6 @@
       font-size: 13px;
       color: #6b7280;
     }
-
-    /* ---------------- Responsive ---------------- */
     @media (max-width: 1024px) {
       .tabs {
         width: 90%;
@@ -224,7 +201,6 @@
         padding: 20px;
       }
     }
-
     @media (max-width: 768px) {
       .dashboard {
         padding: 25px 20px 10px;
@@ -236,7 +212,6 @@
         padding: 10px;
       }
     }
-
     @media (max-width: 480px) {
       .tabs {
         flex-direction: column;
@@ -257,8 +232,6 @@
   </style>
 </head>
 <body>
-
-  <!-- Navbar -->
   <div class="navbar">
     <div class="navbar-left">
       <div class="logo"><i class="fas fa-utensils"></i> UMESS</div>
@@ -266,30 +239,22 @@
     </div>
     <div class="navbar-right">
       Welcome, Ananya Bansal
-      <a href="1st page.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+      <a href="index.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </div>
   </div>
-
-  <!-- Dashboard -->
   <div class="dashboard">
     <h1>Student Dashboard</h1>
     <p>Manage your meals, attendance, and feedback</p>
   </div>
-
-  <!-- Tabs -->
   <div class="tabs">
     <a href="studentdashboard.html"><i class="fas fa-utensils"></i> Meals</a>
     <a href="attendence.html"><i class="fa-regular fa-calendar"></i> Attendance</a>
     <a href="bill.html"><i class="fa-regular fa-file"></i> Bill</a>
     <a href="feedback.html"><i class="fa-regular fa-message"></i> Feedback</a>
   </div>
-
-  <!-- Share Feedback -->
   <div class="card">
     <div class="card-header"><i class="fa-regular fa-message"></i> Share Your Feedback</div>
     <div>Rate Today’s Meal</div>
-
-    <!-- Star Rating (HTML/CSS only) -->
     <div class="stars">
       <input type="radio" name="rating" id="star5" value="5">
       <label for="star5">&#9733;</label>
@@ -302,38 +267,69 @@
       <input type="radio" name="rating" id="star1" value="1">
       <label for="star1">&#9733;</label>
     </div>
-
     <div>Your Comments</div>
     <textarea class="comment-box" id="comment" placeholder="Share your thoughts about the food, service, or suggestions for improvement..."></textarea>
-    <button class="submit-btn">Submit Feedback</button>
+    <button class="submit-btn" id="submitBtn">Submit Feedback</button>
   </div>
-
-  <!-- Recent Feedback -->
   <div class="card">
     <div class="card-header">Your Recent Feedback</div>
-    <div class="feedback-item">
-      <div class="stars">
-        <i class="fas fa-star active"></i>
-        <i class="fas fa-star active"></i>
-        <i class="fas fa-star active"></i>
-        <i class="fas fa-star active"></i>
-        <i class="fas fa-star active"></i>
+    <div id="feedbackList">
+      <div class="feedback-item">
+        <div class="stars">
+          <i class="fas fa-star active"></i>
+          <i class="fas fa-star active"></i>
+          <i class="fas fa-star active"></i>
+          <i class="fas fa-star active"></i>
+          <i class="fas fa-star active"></i>
+        </div>
+        Excellent dinner today! The paneer curry was delicious and well-prepared.
+        <div class="date">Dec 26, 2024</div>
       </div>
-      Excellent dinner today! The paneer curry was delicious and well-prepared.
-      <div class="date">Dec 26, 2024</div>
-    </div>
-    <div class="feedback-item">
-      <div class="stars">
-        <i class="fas fa-star active"></i>
-        <i class="fas fa-star active"></i>
-        <i class="fas fa-star active"></i>
-        <i class="fas fa-star active"></i>
-        <i class="fas fa-star"></i>
+      <div class="feedback-item">
+        <div class="stars">
+          <i class="fas fa-star active"></i>
+          <i class="fas fa-star active"></i>
+          <i class="fas fa-star active"></i>
+          <i class="fas fa-star active"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        Good lunch but could use more variety in vegetables. Overall satisfied.
+        <div class="date">Dec 25, 2024</div>
       </div>
-      Good lunch but could use more variety in vegetables. Overall satisfied.
-      <div class="date">Dec 25, 2024</div>
     </div>
   </div>
-
+  <script>
+    const submitBtn = document.getElementById('submitBtn');
+    const commentBox = document.getElementById('comment');
+    const feedbackList = document.getElementById('feedbackList');
+    const ratingInputs = document.querySelectorAll('input[name="rating"]');
+    submitBtn.addEventListener('click', () => {
+      const selectedRating = document.querySelector('input[name="rating"]:checked');
+      const comment = commentBox.value.trim();
+      if (!selectedRating || comment === '') return;
+      const starsCount = parseInt(selectedRating.value);
+      const feedbackItem = document.createElement('div');
+      feedbackItem.classList.add('feedback-item');
+      const starsDiv = document.createElement('div');
+      starsDiv.classList.add('stars');
+      for (let i = 0; i < 5; i++) {
+        const star = document.createElement('i');
+        star.classList.add('fas', 'fa-star');
+        if (i < starsCount) star.classList.add('active');
+        starsDiv.appendChild(star);
+      }
+      const date = new Date();
+      const formattedDate = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+      const dateDiv = document.createElement('div');
+      dateDiv.classList.add('date');
+      dateDiv.textContent = formattedDate;
+      feedbackItem.appendChild(starsDiv);
+      feedbackItem.append(comment);
+      feedbackItem.appendChild(dateDiv);
+      feedbackList.prepend(feedbackItem);
+      commentBox.value = '';
+      ratingInputs.forEach(radio => radio.checked = false);
+    });
+  </script>
 </body>
 </html>
