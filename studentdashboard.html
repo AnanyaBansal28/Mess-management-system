@@ -315,7 +315,7 @@
       <div class="select-btn not-selected">Select Lunch</div>
     </div>
 
-    <!-- Dinner -->
+    
     <div class="card">
       <h3>Dinner <span class="available">Available</span></h3>
       <span class="price">₹ 40</span>
@@ -329,7 +329,24 @@
       <div class="select-btn not-selected">Select Dinner</div>
     </div>
   </div>
+<script>
+const selectButtons = document.querySelectorAll('.select-btn');
+selectButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    selectButtons.forEach(btn => {
+      btn.classList.remove('selected');
+      btn.classList.add('not-selected');
+      const mealType = btn.parentElement.querySelector('h3').textContent.split(' ')[0];
+      btn.textContent = `Select ${mealType}`;
+    });
+    button.classList.remove('not-selected');
+    button.classList.add('selected');
+    button.textContent = 'Selected';
+  });
+});
+</script>
 
 </body>
 </html>
+
 
