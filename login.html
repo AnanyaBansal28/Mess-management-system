@@ -56,6 +56,7 @@
       color: #333;
       font-weight: 500;
       transition: 0.3s;
+      cursor: pointer;
     }
     .role-switch a:hover {
       background: #4a3aff;
@@ -67,7 +68,8 @@
       text-align: left;
       animation: fadeIn 0.3s ease;
     }
-    :target {
+
+    .form-box.active {
       display: block;
     }
 
@@ -112,34 +114,35 @@
 
     @keyframes fadeIn {
       from {opacity: 0;}
-      to {opacity: 1;}
+      to {opacity: 2;}
     }
 
     @media (max-width: 480px) {
-  .container {
-    width: 90%;
-    padding: 20px;
-  }
-  .role-switch {
-    flex-direction: column;
-  }
-  .role-switch a {
-    text-align: center;
-  }
-}
-
+      .container {
+        width: 90%;
+        padding: 20px;
+      }
+      .role-switch {
+        flex-direction: column;
+      }
+      .role-switch a {
+        text-align: center;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="logo"><i class="fa-solid fa-utensils" style="font-size:30px; color:blue; margin-bottom:10px;"></i> UMESS</div>
+  <div class="logo">
+    <i class="fa-solid fa-utensils" style="font-size:30px; color:blue; margin-bottom:10px;"></i> UMESS
+  </div>
   <div class="subtitle">Access your mess management portal</div>
 
   <div class="container">
     <h2>Welcome Back</h2>
  
     <div class="role-switch">
-      <a href="#admin-login"><i class="fa-solid fa-shield"></i><br>Admin/Staff</a>
-      <a href="#student-login"><i class="fa-solid fa-graduation-cap"></i><br>Student</a>
+      <a onclick="showForm('admin-login')"><i class="fa-solid fa-shield"></i><br>Admin/Staff</a>
+      <a onclick="showForm('student-login')"><i class="fa-solid fa-graduation-cap"></i><br>Student</a>
     </div>
 
     <div id="admin-login" class="form-box">
@@ -150,7 +153,9 @@
         <input type="password" placeholder="Enter password" required>
         <button type="submit" class="btn" formaction="admin_dashboard.html">Login</button>
       </form>
-      <p style="text-align:center;margin-top:10px;">New here? <a href="#admin-signup">Sign Up</a></p>
+      <p style="text-align:center;margin-top:10px;">New here? 
+        <a onclick="showForm('admin-signup')">Sign Up</a>
+      </p>
     </div>
 
     <div id="admin-signup" class="form-box">
@@ -163,7 +168,9 @@
         <input type="password" placeholder="Enter password" required>
         <button type="submit" class="btn" formaction="admin_dashboard.html">Sign Up</button>
       </form>
-      <p style="text-align:center;margin-top:10px;">Already have an account? <a href="#admin-login">Login</a></p>
+      <p style="text-align:center;margin-top:10px;">Already have an account? 
+        <a onclick="showForm('admin-login')">Login</a>
+      </p>
     </div>
 
     <div id="student-login" class="form-box">
@@ -174,7 +181,9 @@
         <input type="password" placeholder="Enter password" required>
         <button type="submit" class="btn" formaction="studentdashboard.html">Login</button>
       </form>
-      <p style="text-align:center;margin-top:10px;">New here? <a href="#student-signup">Sign Up</a></p>
+      <p style="text-align:center;margin-top:10px;">New here? 
+        <a onclick="showForm('student-signup')">Sign Up</a>
+      </p>
     </div>
 
     <div id="student-signup" class="form-box">
@@ -185,10 +194,24 @@
         <input type="password" placeholder="Enter password" required>
         <button type="submit" class="btn" formaction="studentdashboard.html">Sign Up</button>
       </form>
-      <p style="text-align:center;margin-top:10px;">Already have an account? <a href="#student-login">Login</a></p>
+      <p style="text-align:center;margin-top:10px;">Already have an account? 
+        <a onclick="showForm('student-login')">Login</a>
+      </p>
     </div>
 
     <div class="support">Need help? Contact IT Support</div>
   </div>
+
+  <script>
+    function showForm(formId) {
+      document.getElementById("admin-login").style.display = "none";
+      document.getElementById("admin-signup").style.display = "none";
+      document.getElementById("student-login").style.display = "none";
+      document.getElementById("student-signup").style.display = "none";
+      document.getElementById(formId).style.display = "block";
+    }
+
+    showForm('admin-login');
+  </script>
 </body>
 </html>
