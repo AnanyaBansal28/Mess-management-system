@@ -291,7 +291,7 @@
         <div class="item-stock">Current Stock<br><b>450 kg</b></div>
         <div class="item-value">Value<br><b>₹38,250</b></div>
          <div class="item-value">update stock<br><b>
-        <input type="number" id="quantity" name="quantity" min="0" max="100" step="1" value="30" style="background-color:#f0f0f0"></b></div>
+        <input type="number" id="quantity" name="quantity" min="0" max="1000" step="1" value="450" style="background-color:#f0f0f0"></b></div>
 
       </div>
 
@@ -305,7 +305,7 @@
         <div class="item-stock">Current Stock<br><b>25 kg</b></div>
         <div class="item-value">Value<br><b>₹750</b></div>
          <div class="item-value">update stock<br><b>
-        <input type="number" id="quantity" name="quantity" min="0" max="100" step="1" value="30" style="background-color:#f0f0f0"></b></div>
+        <input type="number" id="quantity" name="quantity" min="0" max="1000" step="1" value="25" style="background-color:#f0f0f0"></b></div>
       </div>
 
       <div class="item">
@@ -318,7 +318,7 @@
         <div class="item-stock">Current Stock<br><b>80 liters</b></div>
         <div class="item-value">Value<br><b>₹4,400</b></div>
         <div class="item-value">update stock<br><b>
-        <input type="number" id="quantity" name="quantity" min="0" max="100" step="1" value="30" style="background-color:#f0f0f0"></b></div>
+        <input type="number" id="quantity" name="quantity" min="0" max="1000" step="1" value="80" style="background-color:#f0f0f0"></b></div>
       </div>
 
       <div class="item">
@@ -331,9 +331,50 @@
         <div class="item-stock">Current Stock<br><b>5 kg</b></div>
         <div class="item-value">Value<br><b>₹900</b></div>
         <div class="item-value">update stock<br><b>
-        <input type="number" id="quantity" name="quantity" min="0" max="100" step="1" value="30" style="background-color:#f0f0f0"></b></div>
+        <input type="number" id="quantity" name="quantity" min="0" max="1000" step="1" value="5" style="background-color:#f0f0f0"></b></div>
       </div>
     </section>
   </div>
+
+<script>
+  document.querySelectorAll('.item').forEach(item => {
+    const input = item.querySelector('input[type="number"]');
+    const progressBar = item.querySelector('.progress-bar');
+    const stockText = item.querySelector('.item-stock b');
+    const statusSpan = item.querySelector('.item-status');
+
+    const extractNumber = (text) => parseInt(text.replace(/\D/g, ''));
+
+    let originalStock = extractNumber(stockText.innerText);
+    if (originalStock === 0) originalStock = 1;
+
+    input.addEventListener('input', () => {
+      let updatedValue = parseInt(input.value);
+
+      if (isNaN(updatedValue) || updatedValue < 0) updatedValue = 0;
+
+      if (stockText.innerText.includes("liter")) {
+        stockText.innerText = updatedValue + " liters";
+      } else {
+        stockText.innerText = updatedValue + " kg";
+      }
+
+      let percent = (updatedValue / originalStock) * 100;
+      if (percent > 100) percent = 100;
+      progressBar.style.width = percent + "%";
+
+      if (updatedValue <= originalStock * 0.2) {
+        statusSpan.innerText = "CRITICAL";
+        statusSpan.classList.remove("good");
+        statusSpan.classList.add("critical");
+      } else {
+        statusSpan.innerText = "GOOD";
+        statusSpan.classList.remove("critical");
+        statusSpan.classList.add("good");
+      }
+    });
+  });
+</script>
+
 </body>
 </html>
