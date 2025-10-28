@@ -13,7 +13,6 @@
       background: #f5f5f5;
       color: #333;
     }
-
     header {
       background: #fff;
       padding: 14px 20px;
@@ -33,7 +32,6 @@
       gap: 8px;
       color: #444;
     }
-
     .dropdown {
       position: relative;
       display: inline-block;
@@ -83,16 +81,6 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.08);
       text-align: center;
     }
-    .stat-card h3 {
-      font-size: 14px;
-      margin: 0;
-      color: #555;
-    }
-    .stat-card p {
-      font-size: 18px;
-      margin: 8px 0 0;
-      font-weight: bold;
-    }
 
     .feedback {
       background: #fff;
@@ -101,14 +89,13 @@
       border-radius: 10px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.08);
     }
-    .feedback strong {font-size: 14px;}
-    .tags {margin-left: 8px;}
     .tags span {
       background: #eef2ff;
       color: #444;
       font-size: 11px;
       padding: 2px 6px;
       border-radius: 5px;
+      margin-left: 4px;
     }
     .stars {color: gold; font-size: 14px;}
     .buttons {margin-top: 10px;}
@@ -127,13 +114,6 @@
       border-radius: 6px;
       font-size: 13px;
     }
-
-    @media(max-width:768px){
-      .stats {grid-template-columns: repeat(2,1fr);}
-    }
-    @media(max-width:480px){
-      .stats {grid-template-columns: 1fr;}
-    }
   </style>
 </head>
 <body>
@@ -148,89 +128,99 @@
 
     <div class="dropdown">
       <button class="dropbtn"> All Feedback <i class="fa-solid fa-caret-down"></i></button>
-      <div class="dropdown-content">
-        <a href="#"><i class="fa-solid fa-list"></i> All Feedback</a>
-        <a href="#"><i class="fa-solid fa-star"></i> New</a>
-        <a href="#"><i class="fa-solid fa-check"></i> Reviewed</a>
-        <a href="#"><i class="fa-solid fa-reply"></i> Responded</a>
+      <div class="dropdown-content" id="filterMenu">
+        <a data-filter="all"><i class="fa-solid fa-list"></i> All Feedback</a>
+        <a data-filter="NEW"><i class="fa-solid fa-star"></i> New</a>
+        <a data-filter="REVIEWED"><i class="fa-solid fa-check"></i> Reviewed</a>
+        <a data-filter="RESPONDED"><i class="fa-solid fa-reply"></i> Responded</a>
       </div>
     </div>
   </header>
 
-  <div class="stats">
-    <div class="stat-card">
-      <h3>Average Rating</h3>
-      <p style="color: brown; font-size: 25px;">3.0</p>
-      <i class="fa-solid fa-star" style="color: gold;"></i>
-      <i class="fa-solid fa-star" style="color: gold;"></i>
-      <i class="fa-solid fa-star" style="color: gold;"></i>
-      <i class="fa-regular fa-star" style="color: rgb(175, 171, 171);"></i>
-      <i class="fa-regular fa-star" style="color: rgb(175, 171, 171);"></i>
+  <div id="feedbackList">
+
+    <div class="feedback" data-status="NEW">
+      <strong>Vrinda Kapoor (0321)</strong>
+      <span class="tags status"><span>NEW</span><span>FOOD QUALITY</span></span>
+      <p>Lunch - 01-09-2025 <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span></p>
+      <p>Excellent paneer curry today! The spices were perfectly balanced and the rice was cooked well.</p>
+      <div class="buttons">
+        <button class="reviewBtn"><i class="fa-solid fa-check"></i> Mark as Reviewed</button>
+        <button class="replyBtn"><i class="fa-solid fa-reply"></i> Respond</button>
+      </div>
     </div>
-    <div class="stat-card">
-      <h3>New Feedback</h3>
-      <p style="color: brown; font-size: 25px;"> 2</p>
-      <i class="fa-solid fa-message" style="color: rgb(2, 121, 172);"></i>
+
+    <div class="feedback" data-status="REVIEWED">
+      <strong>Ananya Bansal (0259)</strong>
+      <span class="tags status"><span>REVIEWED</span><span>FOOD QUALITY</span></span>
+      <p>Breakfast - 01-09-2025 <span class="stars">&#9733;&#9733;&#9733;</span></p>
+      <p>The poha was okay but could use more vegetables.</p>
+      <div class="buttons"><button class="replyBtn"><i class="fa-solid fa-reply"></i> Respond</button></div>
     </div>
-    <div class="stat-card">
-      <h3>Positive</h3>
-      <p style="color: brown; font-size: 25px;"> 2</p>
-      <i class="fa-solid fa-thumbs-up" style="color: green;"></i>
+
+    <div class="feedback" data-status="RESPONDED">
+      <strong>Gurasees (0293)</strong>
+      <span class="tags status"><span>RESPONDED</span><span>HYGIENE</span></span>
+      <p>Dinner - 04-09-2025 <span class="stars">&#9733;</span></p>
+      <p>Food was cold and the area was not clean.</p>
+      <div class="admin-response"><b>Admin Response:</b> Issues are fixed.</div>
     </div>
-    <div class="stat-card">
-      <h3>Negative</h3>
-      <p style="color: brown; font-size: 25px;"> 2</p>
-      <i class="fa-solid fa-thumbs-down" style="color: red;"></i>
+
+    <div class="feedback" data-status="NEW">
+      <strong>Sneha (0268)</strong>
+      <span class="tags status"><span>NEW</span><span>SUGGESTION</span></span>
+      <p>Lunch - 02-09-2025 <span class="stars">&#9733;&#9733;&#9733;&#9733;</span></p>
+      <p>Good variety. More South Indian options?</p>
+      <div class="buttons">
+        <button class="reviewBtn"><i class="fa-solid fa-check"></i> Mark as Reviewed</button>
+        <button class="replyBtn"><i class="fa-solid fa-reply"></i> Respond</button>
+      </div>
     </div>
+
+    <div class="feedback" data-status="REVIEWED">
+      <strong>Arjun (0356)</strong>
+      <span class="tags status"><span>REVIEWED</span><span>COMPLAINT</span></span>
+      <p>Breakfast - 01-09-2025 <span class="stars">&#9733;&#9733;</span></p>
+      <p>Bread was stale and tea too sweet.</p>
+      <div class="buttons"><button class="replyBtn"><i class="fa-solid fa-reply"></i> Respond</button></div>
+    </div>
+
   </div>
 
-  <div class="feedback">
-    <strong>Vrinda Kapoor (0321)</strong>
-    <span class="tags"><span>NEW</span><span>FOOD QUALITY</span></span>
-    <p>Lunch - 01-09-2025 <span class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span></p>
-    <p>Excellent paneer curry today! The spices were perfectly balanced and the rice was cooked well.</p>
-    <div class="buttons">
-      <button><i class="fa-solid fa-check"></i> Mark as Reviewed</button>
-      <button><i class="fa-solid fa-reply"></i> Respond</button>
-    </div>
-  </div>
 
-  <div class="feedback">
-    <strong>Ananya Bansal (0259)</strong>
-    <span class="tags"><span>REVIEWED</span><span>FOOD QUALITY</span></span>
-    <p>Breakfast - 01-09-2025 <span class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span></p>
-    <p>The poha was okay but could use more vegetables. The sambar was a bit too salty.</p>
-    <div class="buttons"><button><i class="fa-solid fa-reply"></i> Respond</button></div>
-  </div>
+<script>
+document.querySelectorAll(".reviewBtn").forEach(btn=>{
+  btn.onclick=function(){
+    let box=this.closest(".feedback")
+    box.dataset.status="REVIEWED"
+    box.querySelector(".status").innerHTML="<span>REVIEWED</span>"
+  }
+})
 
-  <div class="feedback">
-    <strong>Gurasees (0293)</strong>
-    <span class="tags"><span>RESPONDED</span><span>HYGIENE</span></span>
-    <p>Dinner - 04-09-2025 <span class="stars"><i class="fa-solid fa-star"></i></span></p>
-    <p>Very disappointed with dinner service. Food was cold and the area was not clean.</p>
-    <div class="admin-response">
-      <b>Admin Response:</b> We have addressed the hygiene issues and implemented quality checks.
-    </div>
-  </div>
+document.querySelectorAll(".replyBtn").forEach(btn=>{
+  btn.onclick=function(){
+    let reply=prompt("Enter your response:")
+    if(reply){
+      let box=this.closest(".feedback")
+      box.dataset.status="RESPONDED"
+      box.querySelector(".status").innerHTML="<span>RESPONDED</span>"
+      let r=document.createElement("div")
+      r.className="admin-response"
+      r.innerHTML="<b>Admin Response:</b> "+reply
+      box.appendChild(r)
+    }
+  }
+})
 
-  <div class="feedback">
-    <strong>Sneha (0268)</strong>
-    <span class="tags"><span>NEW</span><span>SUGGESTION</span></span>
-    <p>Lunch - 02-09-2025 <span class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span></p>
-    <p>Good variety in lunch menu. Would love to see more South Indian options.</p>
-    <div class="buttons">
-      <button><i class="fa-solid fa-check"></i> Mark as Reviewed</button>
-      <button><i class="fa-solid fa-reply"></i> Respond</button>
-    </div>
-  </div>
-
-  <div class="feedback">
-    <strong>Arjun (0356)</strong>
-    <span class="tags"><span>REVIEWED</span><span>COMPLAINT</span></span>
-    <p>Breakfast - 01-09-2025 <span class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span></p>
-    <p>Breakfast was terrible today. The bread was stale and tea was too sweet.</p>
-    <div class="buttons"><button><i class="fa-solid fa-reply"></i> Respond</button></div>
-  </div>
+document.querySelectorAll("#filterMenu a").forEach(option=>{
+  option.onclick=function(){
+    let f=this.dataset.filter
+    document.querySelectorAll("#feedbackList .feedback").forEach(box=>{
+      box.style.display=(f==="all" || box.dataset.status===f)?"block":"none"
+    })
+  }
+})
+</script>
 
 </body>
 </html>
